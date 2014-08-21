@@ -1,0 +1,17 @@
+// Bourbon Overrides
+$column                   : golden-ratio(1em, 3); // Column width
+$gutter                   : golden-ratio(.1em, 1); // Gutter between each two columns
+$grid-columns             : 12; // Total number of columns in the grid
+$max-width                : rem(1680); // Max-width of the outer container
+$border-box-sizing        : true; // Makes all elements have a border-box layout
+$default-feature          : min-width; // Default @media feature for the breakpoint() mixin
+$default-layout-direction : LTR;
+
+// Element Dimensions
+$primary-nav-height : 7rem;
+
+// Global Theme Colors
+$body-copy-color : #333;
+$baseline-spacing-hard : 4.4rem;
+$baseline-spacing-soft : 2.2rem;
+$homedepot-orange : #F16322;

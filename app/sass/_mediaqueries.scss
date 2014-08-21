@@ -1,0 +1,39 @@
+@mixin respond-to($media) {
+
+  // SMALL: 641px min
+  @if $media == handhelds {
+    @media screen and (max-width: 40em) { @content; }
+  }
+  // MEDIUM: 641px min
+  @else if $media == md-screen {
+    @media screen and (min-width: 40.063em) { @content; }
+  }
+  // LARGE: 1025px min
+  @else if $media == lg-screen {
+    @media screen and (min-width: 64.063em) { @content; }
+  }
+  // X-LARGE: 1441px min
+  @else if $media == x-lg-screen {
+    @media screen and (min-width: 90.063em) { @content; }
+  }
+  // XX-LARGE 1921px min
+  @else if $media == xx-lg-screen {
+    @media screen and (min-width: 120.063em) { @content; }
+  }
+
+  @else if $media == short-screen {
+    @media screen and (max-height: 40.063em) { @content; }
+  }
+
+  /**** DEVICE SPECIFIC ****/
+
+  // iPad Portrait
+  @else if $media == ipad-portrait {
+    @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) { @content; }
+  }
+
+  // iPad Landscape
+  @else if $media == ipad-landscape {
+    @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) { @content; }
+  }
+}

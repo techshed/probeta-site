@@ -1,0 +1,26 @@
+.logo{
+    margin-bottom: 2rem;
+    float: left;
+    width: 100%;
+
+    img{
+        width: 100%;
+    }
+}
+table{
+    width: 100%;
+}
+.btn{
+    width: 100%;
+}
+.serif{
+    @extend %serif;
+}
+table{
+    margin: 2rem 0;
+
+    td, th{
+        padding: 1rem;
+        border: 1px solid #888;
+    }
+}

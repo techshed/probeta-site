@@ -1,0 +1,93 @@
+// Type
+
+%serif{
+  font-family: "Libre Baskerville", "Palatino Linotype", "Palatino", serif;
+  font-style: italic;
+  letter-spacing: 0.06rem;
+}
+%sans-serif{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+}
+%monospace{
+  font-family: 'Consolas', 'Monaco', 'Courier New', 'Courier', monospace;
+}
+%superscript{
+  vertical-align: super;
+  font-size: 80%;
+}
+
+
+// Layout & Positioning
+
+%debug-layout{
+  * { background-color: rgba(255,0,0,.2) !important; }
+  * * { background-color: rgba(0,255,0,.2) !important; }
+  * * * { background-color: rgba(0,0,255,.2) !important; }
+  * * * * { background-color: rgba(255,0,255,.2) !important; }
+  * * * * * { background-color: rgba(0,255,255,.2) !important; }
+  * * * * * * { background-color: rgba(255,255,0,.2) !important; }
+}
+
+%vertical-align {
+  @include transform(translateY(-50%));
+  position: relative;
+  top: 50%;
+}
+%absolute-center {
+  @include transform(translateY(-50%) translateX(-50%));
+  position: relative;
+  top: 50%;
+  left: 50%;
+}
+%vertical-align-children{
+  text-align: center;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+  }
+}
+%inline-list{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li, a{
+    display: inline-block;
+    float: left;
+  }
+}
+%ghost-block{
+  display: block;
+  opacity: 0;
+  height: 0;
+}
+
+
+// Helpers
+
+%default-cursor{
+  cursor: default;
+}
+%no-select{
+  @include user-select(none);
+}
+
+
+// Rendering
+
+%hwa {
+  -webkit-transform: translateZ(0) translate3D(0,0,0);
+  -moz-transform: translateZ(0) translate3D(0,0,0);
+  -o-transform: translateZ(0) translate3D(0,0,0);
+  -ms-transform: translateZ(0) translate3D(0,0,0);
+  transform: translateZ(0) translate3D(0,0,0);
+}
+%backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}

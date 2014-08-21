@@ -1,0 +1,30 @@
+{
+    "folders":
+    [
+        {
+            "file_exclude_patterns":
+            [
+                "*.css",
+                ".bowerrc",
+                ".gitattributes"
+            ],
+            "folder_exclude_patterns":
+            [
+                "dist",
+                ".tmp",
+                "tmp",
+                "fonts",
+                "favicons",
+                "images",
+                "styles",
+                "videos",
+                ".sass-cache",
+                "node_modules",
+                "app/bower_components",
+                "test"
+            ],
+            "follow_symlinks": true,
+            "path": "."
+        }
+    ]
+}

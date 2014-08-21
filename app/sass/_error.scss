@@ -1,0 +1,21 @@
+.error{
+  .page-header--subpage{
+    height: 40rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1{
+    margin-left: 0;
+  }
+
+  h1 span{
+    @extend %monospace;
+    font-weight: 100;
+    color: #aaa;
+    display: inline-block;
+  }
+  .page-header__copy{
+
+  }
+}

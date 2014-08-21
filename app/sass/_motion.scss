@@ -1,0 +1,24 @@
+// Transitions
+%fastest-transition{
+  @include transition(all .1s $ease-in-out-quad);
+}
+%fast-transition{
+  @include transition(all .12s $ease-in-out-quad);
+}
+%regular-transition{
+  @include transition(all .33s ease);
+}
+%slow-transition{
+  @include transition(all 1s $ease-in-out-quad);
+}
+%slower-transition{
+  @include transition(all 1.5s $ease-in-out-quad);
+}
+%fade-transition{
+  @include transition(opacity .25s ease);
+}
+%no-transition{
+  @include transition(none);
+}
+
+// Animations
