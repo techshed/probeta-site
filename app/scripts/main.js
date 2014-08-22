@@ -10,6 +10,7 @@ var ProAppBetaSite = (function() {
         timer;
 
     function init() {
+
         page = getPath();
         device = getDevice();
         FastClick.attach(document.body);
@@ -23,17 +24,11 @@ var ProAppBetaSite = (function() {
 
     function getDevice() {
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
-      {
-        return 'iOS';
-      }
-      else if( userAgent.match( /Android/i ) )
+      if( userAgent.match( /Android/i ) )
       {
         return 'Android';
-      }
-      else
-      {
-        return 'unknown';
+      } else{
+        return false;
       }
     }
 
@@ -45,9 +40,8 @@ var ProAppBetaSite = (function() {
             showPage(path);
         });
 
-        $('.install-apperian').on('click', function(){
-            showPage('download-android');
-        });
+
+
 
         // disable all transitions when window is being resized
         $(window).on('resize', debounce(function() {
@@ -59,10 +53,21 @@ var ProAppBetaSite = (function() {
         }, 0));
     }
 
+    function downloadURL(url) {
+        var hiddenIFrameID = 'hiddenDownloader',
+            iframe = document.getElementById(hiddenIFrameID);
+        if (iframe === null) {
+            iframe = document.createElement('iframe');
+            iframe.id = hiddenIFrameID;
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+        }
+        iframe.src = url;
+    }
+
     function showPage(page) {
 
         if (page === '') { page = 'home'; }
-
         var pageContainer = $( '#page-' + page);
 
         // underline nav link
@@ -76,9 +81,16 @@ var ProAppBetaSite = (function() {
             // set body class
             if (page === 'home') {
                 $('body').removeClass().addClass('home');
-                bindEvents();
+
+                if(device === 'Android'){
+                    $('.install-apperian').on('click', function(ev) {
+                        ev.preventDefault();
+                        showPage('android');
+                    });
+                }
 
             } else {
+
                 // init general subpage
                 $('body').removeClass().addClass(page + ' subpage');
             }

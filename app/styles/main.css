@@ -68,6 +68,7 @@ html {
       font-size: 120%; } }
 
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
   font-size: 1.6rem;
@@ -102,8 +103,6 @@ a {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100%;
-  min-height: 40rem;
   background: #fff; }
   [id^=page].is-hidden {
     opacity: 0;
@@ -118,7 +117,6 @@ a {
   position: relative;
   float: left;
   width: 100%;
-  height: 100%;
   z-index: 0; }
   #pages-container:after {
     content: "";
@@ -276,9 +274,11 @@ a {
 .logo {
   margin-bottom: 2rem;
   float: left;
-  width: 100%; }
+  width: 100%;
+  clear: both; }
   .logo img {
-    width: 100%; }
+    width: 100%;
+    max-width: 100%; }
 
 table {
   width: 100%; }
