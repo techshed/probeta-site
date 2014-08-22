@@ -6,8 +6,7 @@ var ProAppBetaSite = (function() {
 
     var $pageWindow = $('#pages-container'),
         page,
-        device,
-        timer;
+        device;
 
     function init() {
 
@@ -15,7 +14,12 @@ var ProAppBetaSite = (function() {
         device = getDevice();
         FastClick.attach(document.body);
         bindEvents();
-        showPage(page);
+
+        if(device==='Android'){
+            showPage('android');
+        } else{
+            showPage('ios');
+        }
     }
 
     function getPath() {
@@ -39,35 +43,11 @@ var ProAppBetaSite = (function() {
             var path = getPath();
             showPage(path);
         });
-
-
-
-
-        // disable all transitions when window is being resized
-        $(window).on('resize', debounce(function() {
-            clearInterval(timer);
-            $('body').addClass('no-transitions');
-            timer = setTimeout(function() {
-                $('body').removeClass('no-transitions');
-            }, 1000);
-        }, 0));
-    }
-
-    function downloadURL(url) {
-        var hiddenIFrameID = 'hiddenDownloader',
-            iframe = document.getElementById(hiddenIFrameID);
-        if (iframe === null) {
-            iframe = document.createElement('iframe');
-            iframe.id = hiddenIFrameID;
-            iframe.style.display = 'none';
-            document.body.appendChild(iframe);
-        }
-        iframe.src = url;
     }
 
     function showPage(page) {
 
-        if (page === '') { page = 'home'; }
+
         var pageContainer = $( '#page-' + page);
 
         // underline nav link
@@ -79,20 +59,15 @@ var ProAppBetaSite = (function() {
             pageContainer.siblings().removeClass().addClass('is-hidden');
 
             // set body class
-            if (page === 'home') {
-                $('body').removeClass().addClass('home');
+            if (page === 'android') {
+                $('.install-apperian').click(function(){
+                    showPage('download-android');
+                });
 
-                if(device === 'Android'){
-                    $('.install-apperian').on('click', function(ev) {
-                        ev.preventDefault();
-                        showPage('android');
-                    });
-                }
-
-            } else {
-
-                // init general subpage
-                $('body').removeClass().addClass(page + ' subpage');
+                $('.install-apperian').attr({
+                    target: '_blank',
+                    href: 'https://dl.dropboxusercontent.com/u/18721647/_download/ProdAppCatalog_1-29.apk'
+                });
             }
             // page doesn't exist yet so let's go load it
         } else{
@@ -116,20 +91,8 @@ var ProAppBetaSite = (function() {
             } else{
                 showPage(page);
             }
-            pageContainer.find('p').unorphanize(1);
         });
     }
 
-    function debounce(func, timer) {
-        var timeoutID;
-        return function() {
-            var scope = this,
-                args = arguments;
-                clearTimeout(timeoutID);
-                timeoutID = setTimeout(function() {
-                func.apply(scope, Array.prototype.slice.call(args));
-            }, timer);
-        };
-    }
     init();
 })();
