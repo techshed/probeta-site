@@ -17,8 +17,10 @@ var ProAppBetaSite = (function() {
 
         if(device==='Android'){
             showPage('android');
-        } else{
+        }else if(device==='iOS'){
             showPage('ios');
+        }else{
+            showPage('desktop');
         }
     }
 
@@ -31,8 +33,10 @@ var ProAppBetaSite = (function() {
       if( userAgent.match( /Android/i ) )
       {
         return 'Android';
+      } else if( userAgent.match( /(iPad|iPhone|iPod)/i ) ){
+        return 'iOS';
       } else{
-        return false;
+        return 'unknown';
       }
     }
 
@@ -46,7 +50,6 @@ var ProAppBetaSite = (function() {
     }
 
     function showPage(page) {
-
 
         var pageContainer = $( '#page-' + page);
 
