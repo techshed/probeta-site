@@ -80,7 +80,7 @@ var ProAppBetaSite = (function() {
 
     function loadPage(page) {
         // path to html
-        var pageHtml = ('/pages/' + page + '.html');
+        var pageHtml = ('pages/' + page + '.html');
 
         // create page container
         var pageContainer = $( '<div id=page-' + page + ' class="is-hidden" />');
