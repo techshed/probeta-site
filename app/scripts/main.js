@@ -10,7 +10,6 @@ var ProAppBetaSite = (function() {
 
     function init() {
 
-        page = getPath();
         device = getDevice();
         FastClick.attach(document.body);
         bindEvents();
@@ -41,12 +40,7 @@ var ProAppBetaSite = (function() {
     }
 
     function bindEvents() {
-        // enable back button via HTML5 pop state
-        $(window).on('popstate', function(ev) {
-            ev.preventDefault();
-            var path = getPath();
-            showPage(path);
-        });
+
     }
 
     function showPage(page) {

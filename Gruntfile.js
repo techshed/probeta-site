@@ -300,7 +300,8 @@ module.exports = function(grunt) {
             '{,*/}*.html',
             'favicons/{,*/}*',
             'styles/{,*/}*',
-            'images/{,*/}*'
+            'images/{,*/}*',
+            'scripts/vendor/{,*/}*'
           ]
         }]
       },
