@@ -21,6 +21,8 @@ var ProAppBetaSite = (function() {
         }else{
             showPage('desktop');
         }
+
+
     }
 
     function getPath() {
@@ -29,7 +31,7 @@ var ProAppBetaSite = (function() {
 
     function getDevice() {
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      if( userAgent.match( /Android/i ) )
+      if( userAgent.match( /(Android)/i ) )
       {
         return 'Android';
       } else if( userAgent.match( /(iPad|iPhone|iPod)/i ) ){
@@ -64,6 +66,12 @@ var ProAppBetaSite = (function() {
                 $('.install-apperian').attr({
                     target: '_blank',
                     href: 'https://dl.dropboxusercontent.com/u/18721647/_download/ProdAppCatalog_1-29.apk'
+                });
+            } else if (page === 'desktop') {
+                $('.goto-android').on('click', function(ev){
+                    ev.preventDefault();
+                    showPage('android');
+                    console.log('POO!');
                 });
             }
             // page doesn't exist yet so let's go load it

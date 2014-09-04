@@ -35,7 +35,7 @@ body{
 }
 
 a{
-  color: darken($homedepot-orange, 20%);
+  color: $homedepot-orange;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
